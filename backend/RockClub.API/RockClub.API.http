@@ -1,0 +1,6 @@
+@RockClub.API_HostAddress = http://localhost:5152
+
+GET {{RockClub.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RockClub.Domain\RockClub.Domain.csproj" />
+    <ProjectReference Include="..\RockClub.Infra\RockClub.Infra.csproj" />
+    <ProjectReference Include="..\RockClub.Services\RockClub.Services.csproj" />
+  </ItemGroup>
+
+</Project>
