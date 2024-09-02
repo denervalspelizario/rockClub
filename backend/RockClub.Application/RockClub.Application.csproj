@@ -32,11 +32,9 @@
 
   <ItemGroup>
     <Folder Include="ColaboradorCQ\Commands\" />
-    <Folder Include="ColaboradorCQ\Dtos\" />
     <Folder Include="ColaboradorCQ\Handlers\" />
     <Folder Include="ColaboradorCQ\Validator\" />
     <Folder Include="ColaboradorCQ\Queries\" />
-    <Folder Include="Response\" />
   </ItemGroup>
 
 </Project>
