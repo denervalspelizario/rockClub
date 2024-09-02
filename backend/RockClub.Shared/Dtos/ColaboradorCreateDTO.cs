@@ -1,8 +1,7 @@
-﻿using RockClub.Domain.Enum;
+﻿using RockClub.Shared.Enum;
 using System.ComponentModel.DataAnnotations;
 
-
-namespace RockClub.Application.ColaboradorCQ.Dtos
+namespace RockClub.Shared.Dtos
 {
     public class ColaboradorCreateDTO
     {

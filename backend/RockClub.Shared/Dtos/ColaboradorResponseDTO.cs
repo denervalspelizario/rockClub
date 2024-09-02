@@ -1,6 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RockClub.Application.ColaboradorCQ.Dtos
+
+namespace RockClub.Shared.Dtos
 {
     public class ColaboradorResponseDTO
     {

@@ -1,6 +1,6 @@
-﻿namespace RockClub.Application.Response
+﻿namespace RockClub.Shared.Response
 {
-    public class Response<T>
+    public class ResponseBase<T>
     {
         public T? Dados { get; set; }
         public string? Mensagem { get; set; }

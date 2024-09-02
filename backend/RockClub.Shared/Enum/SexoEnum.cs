@@ -1,4 +1,4 @@
-﻿namespace RockClub.Domain.Enum
+﻿namespace RockClub.Shared.Enum
 {
     public enum SexoEnum
     {

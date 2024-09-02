@@ -28,6 +28,7 @@
     <ProjectReference Include="..\RockClub.Domain\RockClub.Domain.csproj" />
     <ProjectReference Include="..\RockClub.Infra\RockClub.Infra.csproj" />
     <ProjectReference Include="..\RockClub.Services\RockClub.Services.csproj" />
+    <ProjectReference Include="..\RockClub.Shared\RockClub.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
