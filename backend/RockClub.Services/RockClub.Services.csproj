@@ -29,4 +29,8 @@
     <ProjectReference Include="..\RockClub.Infra\RockClub.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Colaborador\" />
+  </ItemGroup>
+
 </Project>
