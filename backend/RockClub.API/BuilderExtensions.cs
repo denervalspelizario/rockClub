@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RockClub.Domain.Abstractions;
+using RockClub.Shared.Interfaces;
 using RockClub.Infra.Persistence;
 using RockClub.Services.Colaborador;
 

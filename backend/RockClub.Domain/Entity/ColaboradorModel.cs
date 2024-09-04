@@ -1,4 +1,4 @@
-﻿using RockClub.Domain.Enum;
+﻿using RockClub.Shared.Enum;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RockClub.Domain.Entity
