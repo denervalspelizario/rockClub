@@ -4,11 +4,8 @@ using RockClub.Shared.Response;
 
 namespace RockClub.Services.Colaborador
 {
-    public class ColaboradorService : IColaboradorService
+    public class ColaboradorService
     {
-        public Task<ResponseBase<ColaboradorResponseDTO>> AdicaoColaborador(ColaboradorCreateDTO colaborador)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

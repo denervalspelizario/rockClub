@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RockClub.Domain.Entity;
+using RockClub.Shared.Entity;
 
 namespace RockClub.Infra.Persistence
 {

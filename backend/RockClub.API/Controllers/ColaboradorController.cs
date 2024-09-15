@@ -1,25 +1,37 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RockClub.Shared.Dtos;
+using RockClub.API.Filters;
+using RockClub.Application.ColaboradorCQ.Commands;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace RockClub.API.Controllers
 {
     [Route("rockclub/[controller]")]
     [ApiController]
-    public class ColaboradorController(
-        IMediator mediator,
-        IConfiguration configuration) : ControllerBase
+    public class ColaboradorController : ControllerBase
     {
-        // injeções de dependencia
-        private readonly IMediator _mediator = mediator;
-        private readonly IConfiguration _configuration = configuration;
+        private readonly IMediator _mediator;
+        private readonly IConfiguration _configuration;
+
+        public ColaboradorController(IMediator mediator, IConfiguration configuration)
+        {
+            _mediator = mediator;
+            _configuration = configuration;
+        }
 
         [HttpPost]
         [Route("adicionarColaborador/")]
-        public async Task<IActionResult> AdicaoColaborador(ColaboradorCreateDTO colaborador )
+        [SwaggerRequestExample(typeof(CreateColaboradorCommand), typeof(ColaboradorCreateSchema))]
+        public async Task<IActionResult> AdicaoColaborador(CreateColaboradorCommand colaborador)
         {
             var request = await _mediator.Send(colaborador);
-            return Ok();
+
+            if (request.Mensagem == "Dados Adicionandos com Sucesso")
+            {
+                return Ok(request.Dados);
+            }
+            return BadRequest(request.Mensagem);
         }
     }
 }
+

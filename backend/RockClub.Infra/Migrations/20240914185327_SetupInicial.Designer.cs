@@ -12,8 +12,8 @@ using RockClub.Infra.Persistence;
 namespace RockClub.Infra.Migrations
 {
     [DbContext(typeof(RockClubDbContext))]
-    [Migration("20240902153526_ColaboradorSetup")]
-    partial class ColaboradorSetup
+    [Migration("20240914185327_SetupInicial")]
+    partial class SetupInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,14 +25,14 @@ namespace RockClub.Infra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("RockClub.Domain.Entity.ColaboradorModel", b =>
+            modelBuilder.Entity("RockClub.Shared.Entity.ColaboradorModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Cargo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Cargo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Cpf")
                         .HasColumnType("nvarchar(max)");
@@ -40,7 +40,7 @@ namespace RockClub.Infra.Migrations
                     b.Property<DateTime>("Data_admissao")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("Data_nascimento")
+                    b.Property<DateTime>("Data_nascimento")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Departamento")
@@ -61,7 +61,7 @@ namespace RockClub.Infra.Migrations
                     b.Property<int>("Sexo")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Status")
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.Property<string>("Telefone")

@@ -24,10 +24,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RockClub.Shared\RockClub.Shared.csproj" />
-  </ItemGroup>
-
-	
-
+  
 </Project>

@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServices();
 builder.AddDatabase();
 builder.AddInjections();
+builder.AddValidations();
+
+
+
 
 var app = builder.Build();
 
@@ -14,6 +18,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RockClub v1"));
+
 }
 
 app.UseHttpsRedirection();

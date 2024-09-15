@@ -7,13 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockClub.API", "RockClub.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockClub.Application", "RockClub.Application\RockClub.Application.csproj", "{8B54CA1E-97F9-4BEB-BB3E-2862F0C5F4F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockClub.Domain", "RockClub.Domain\RockClub.Domain.csproj", "{922CC848-5847-4E2B-B1DF-D83369D1BAA9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockClub.Infra", "RockClub.Infra\RockClub.Infra.csproj", "{F873E60D-F03C-4AF0-8DC9-1CDA4D797B5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockClub.Services", "RockClub.Services\RockClub.Services.csproj", "{4B5FA68A-E143-4652-8174-772D0F98BC49}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockClub.Shared", "RockClub.Shared\RockClub.Shared.csproj", "{6865A819-3411-4C7D-A5E1-ECEBC1C432F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockClub.Shared", "RockClub.Shared\RockClub.Shared.csproj", "{6865A819-3411-4C7D-A5E1-ECEBC1C432F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,18 +25,10 @@ Global
 		{8B54CA1E-97F9-4BEB-BB3E-2862F0C5F4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B54CA1E-97F9-4BEB-BB3E-2862F0C5F4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B54CA1E-97F9-4BEB-BB3E-2862F0C5F4F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{922CC848-5847-4E2B-B1DF-D83369D1BAA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{922CC848-5847-4E2B-B1DF-D83369D1BAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{922CC848-5847-4E2B-B1DF-D83369D1BAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{922CC848-5847-4E2B-B1DF-D83369D1BAA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F873E60D-F03C-4AF0-8DC9-1CDA4D797B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F873E60D-F03C-4AF0-8DC9-1CDA4D797B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F873E60D-F03C-4AF0-8DC9-1CDA4D797B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F873E60D-F03C-4AF0-8DC9-1CDA4D797B5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B5FA68A-E143-4652-8174-772D0F98BC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B5FA68A-E143-4652-8174-772D0F98BC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B5FA68A-E143-4652-8174-772D0F98BC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B5FA68A-E143-4652-8174-772D0F98BC49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6865A819-3411-4C7D-A5E1-ECEBC1C432F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6865A819-3411-4C7D-A5E1-ECEBC1C432F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6865A819-3411-4C7D-A5E1-ECEBC1C432F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
