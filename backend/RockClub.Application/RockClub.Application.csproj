@@ -31,8 +31,4 @@
     <ProjectReference Include="..\RockClub.Shared\RockClub.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ColaboradorCQ\Queries\" />
-  </ItemGroup>
-
 </Project>

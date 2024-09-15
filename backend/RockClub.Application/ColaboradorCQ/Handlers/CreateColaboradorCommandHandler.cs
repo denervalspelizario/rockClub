@@ -33,9 +33,9 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
 
 
             // validações
-            var emailExiste = _colaboradorRepository.VerificacaoEmail(request.Email);
-            var cpfExiste = _colaboradorRepository.VerificacaoCpf(request.Cpf);
-            var telefonelExiste = _colaboradorRepository.VerificacaoTelefone(request.Telefone);
+            var emailExiste = await _colaboradorRepository.VerificacaoEmail(request.Email);
+            var cpfExiste = await _colaboradorRepository.VerificacaoCpf(request.Cpf);
+            var telefonelExiste = await _colaboradorRepository.VerificacaoTelefone(request.Telefone);
 
             if(emailExiste)
             {

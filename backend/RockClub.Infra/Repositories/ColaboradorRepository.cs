@@ -7,7 +7,6 @@ using RockClub.Shared.Response;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-
 namespace RockClub.Infra.Repositories
 {
     public class ColaboradorRepository : IColaboradorRepository
@@ -55,22 +54,65 @@ namespace RockClub.Infra.Repositories
             }
         }
 
-        public bool VerificacaoCpf(string cpf)
+        public async Task<ResponseBase<ColaboradorModel>> BuscarColaborador(Guid id)
         {
-            return _context.Colaborador.Any(x => x.Cpf == cpf);
+            var resposta = new ResponseBase<ColaboradorModel>();
+
+            try
+            {
+                var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == id);
+
+                resposta.Dados = colaboradorEncontrado;
+                resposta.Mensagem = "Dados de coloborador buscado com sucesso";
+                return resposta;
+
+            }
+            catch (Exception erro)
+            {
+                resposta.Mensagem = "Erro interno na solicitação de cadastro de colaborador";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao buscar o colaborador de {id}", id);
+                return resposta;
+            }
+        }
+
+        public async Task<ResponseBase<List<ColaboradorModel>>> ListarColaboradores()
+        {
+            var resposta = new ResponseBase<List<ColaboradorModel>>();
+
+            try
+            {
+                var listarColaboradores = await _context.Colaborador.ToListAsync();
+
+                resposta.Dados = listarColaboradores;
+                return resposta;
+
+            }
+            catch (Exception erro)
+            {
+                resposta.Mensagem = "Erro interno na solicitação de listagem de colaboradores";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao listar os colaboradores");
+                return resposta;
+            }
+        }
+
+        public async Task<bool> VerificacaoCpf(string cpf)
+        {
+            return await _context.Colaborador.AnyAsync(x => x.Cpf == cpf);
             
         }
 
-        public bool VerificacaoEmail(string email)
+        public async Task<bool> VerificacaoEmail(string email)
         {
-            return _context.Colaborador.Any(x => x.Email == email);
+            return await _context.Colaborador.AnyAsync(x => x.Email == email);
 
         }
 
-        public bool VerificacaoTelefone(string telefone)
+        public async Task<bool> VerificacaoTelefone(string telefone)
         {
-            return _context.Colaborador.Any(x => x.Telefone == telefone);
+            return await _context.Colaborador.AnyAsync(x => x.Telefone == telefone);
 
         }
+
+       
     }
 }
