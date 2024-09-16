@@ -35,6 +35,12 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
             // chamado metodo que lista do repositório
             var respostaColaborador = await _colaboradorRepository.BuscarColaborador(request.Id);
 
+            if(respostaColaborador.Dados.Status == false)
+            {
+                resposta.Mensagem = "Cadastro do colaborador está desabilitado";
+                return resposta;
+            }
+
             // formatando dados do novo colaborador para resposta
             var colaboradorResposta = new ColaboradorResponseDTO(
                 respostaColaborador.Dados.Id,
@@ -51,6 +57,7 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
                 respostaColaborador.Dados.Departamento.ToString()
                 );
 
+           
             resposta.Dados = colaboradorResposta;
             resposta.Status = respostaColaborador.Dados.Status;
             resposta.Mensagem = respostaColaborador.Mensagem;

@@ -69,11 +69,16 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
                 status
             );
 
-            Console.WriteLine($"\n dado colaboradorEntity {colaboradorEntity.Email} \n");
-
+            
             // Adicionar o produto no repositório
             var respostaColaborador = await _colaboradorRepository.UpdateColaborador(colaboradorEntity);
 
+
+            if (respostaColaborador.Status == false)
+            {
+                resposta.Mensagem = "Cadastro do colaborador desabilitado";
+                return resposta;
+            }
 
             // formatando dados do novo colaborador para resposta
             var colaboradorResposta = new ColaboradorResponseDTO(
@@ -90,6 +95,8 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
                 respostaColaborador.Dados.Salario,
                 respostaColaborador.Dados.Departamento.ToString()
                 );
+
+            
 
             resposta.Dados = colaboradorResposta;
             resposta.Status = respostaColaborador.Dados.Status;

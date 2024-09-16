@@ -105,9 +105,6 @@ namespace RockClub.Infra.Repositories
                 
                 var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == colaborador.Id);
 
-                Console.WriteLine($"\n dado colaboradorEncontrado {colaboradorEncontrado.Email} \n");
-
-
                 // alterando tabela com dados adm por dados admAtualizado
                 _context.Colaborador.Entry(colaboradorEncontrado).CurrentValues.SetValues(colaborador);
 
@@ -116,9 +113,6 @@ namespace RockClub.Infra.Repositories
 
                 // buscando novo colaborador no db
                 var colaboradorAlterado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == colaborador.Id);
-
-                Console.WriteLine($"\n dado colaboradorAlterado {colaboradorAlterado.Email} \n");
-
 
                 // adicionando respostas de sucesso 
                 resposta.Dados = colaboradorAlterado;
@@ -136,6 +130,31 @@ namespace RockClub.Infra.Repositories
             }
         }
 
+        public async Task<ResponseMessage> DesabilitarColaborador(Guid id)
+        {
+            var resposta = new ResponseMessage();
+            try
+            {
+                var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == id);
+
+                
+                // alteração do status da entidade                   
+                colaboradorEncontrado.Status = false;
+
+                // salvando os dados
+                _context.SaveChanges();
+
+                resposta.Message = "Cadastro do colaborador desativado com sucesso";
+                return resposta;
+
+            }
+            catch (Exception erro)
+            {
+                resposta.Message = "Erro interno na solicitação de desabilitar cadastro do colaborador";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao desabilitar colaborador de {id}", id);
+                return resposta;
+            }
+        }
         public async Task<bool> BuscarUserPorId(Guid id)
         {
             return await _context.Colaborador.AnyAsync(x => x.Id == id);
@@ -196,6 +215,20 @@ namespace RockClub.Infra.Repositories
             return resposta;
         }
 
+        public async Task<bool> StatusColaborador(Guid id)
+        {
+            var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == id);
 
+            bool status = true;
+
+            // validando se colaborador já esta ativado
+            if (colaboradorEncontrado.Status == false)
+            {
+                status = false;
+                return status;
+            }
+
+            return status;
+        }
     }
 }

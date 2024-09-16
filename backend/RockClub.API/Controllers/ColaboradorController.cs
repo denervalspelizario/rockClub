@@ -74,6 +74,20 @@ namespace RockClub.API.Controllers
             }
             return BadRequest(request.Mensagem);
         }
+
+        [HttpPatch]
+        [Route("desabilitarColaborador/{id:guid}")]
+        public async Task<IActionResult> DesabilitarColaborador(Guid id)
+        {
+            var request = await _mediator.Send(new DisableColaboradorCommand { Id = id});
+
+            if(request.Message == "Cadastro do colaborador desativado com sucesso")
+            {
+                return Ok(request);
+            }
+            return BadRequest(request.Message);
+        }
+
     }
 }
 

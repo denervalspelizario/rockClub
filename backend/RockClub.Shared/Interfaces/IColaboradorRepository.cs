@@ -9,11 +9,14 @@ namespace RockClub.Shared.Interfaces
         Task<ResponseBase<ColaboradorModel>> BuscarColaborador(Guid id);
         Task<ResponseBase<List<ColaboradorModel>>> ListarColaboradores();
         Task<ResponseBase<ColaboradorModel>> UpdateColaborador(ColaboradorModel colaborador);
+        Task<ResponseMessage> DesabilitarColaborador(Guid id);
         Task<bool> VerificacaoEmail(string email);
         Task<bool> VerificacaoCpf(string cpf);
         Task<bool> VerificacaoTelefone(string telefone);
         Task<string> VerificacaoDadosUnicos(Guid id, string email, string cpf, string telefone);
         Task<bool> BuscarUserPorId(Guid id);
+        Task<bool> StatusColaborador(Guid id);
+
 
     }
 }
