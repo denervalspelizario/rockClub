@@ -88,6 +88,19 @@ namespace RockClub.API.Controllers
             return BadRequest(request.Message);
         }
 
+        [HttpPatch]
+        [Route("habilitarColaborador/{id:guid}")]
+        public async Task<IActionResult> HabilitarColaborador(Guid id)
+        {
+            var request = await _mediator.Send(new EnableColaboradorCommand { Id = id });
+
+            if (request.Message == "Cadastro do colaborador habilitado com sucesso")
+            {
+                return Ok(request);
+            }
+            return BadRequest(request.Message);
+        }
+
     }
 }
 

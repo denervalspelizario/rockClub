@@ -69,8 +69,8 @@ namespace RockClub.Infra.Repositories
             }
             catch (Exception erro)
             {
-                resposta.Mensagem = "Erro interno na solicitação de cadastro de colaborador";
-                _logger.LogError(erro.Message, "Ocorreu um erro ao buscar o colaborador de {id}", id);
+                resposta.Mensagem = "Erro interno na solicitação de busca de colaborador";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao buscar o colaborador de id {id}", id);
                 return resposta;
             }
         }
@@ -151,7 +151,33 @@ namespace RockClub.Infra.Repositories
             catch (Exception erro)
             {
                 resposta.Message = "Erro interno na solicitação de desabilitar cadastro do colaborador";
-                _logger.LogError(erro.Message, "Ocorreu um erro ao desabilitar colaborador de {id}", id);
+                _logger.LogError(erro.Message, "Ocorreu um erro ao desabilitar colaborador de id {id}", id);
+                return resposta;
+            }
+        }
+
+        public async Task<ResponseMessage> HabilitarColaborador(Guid id)
+        {
+            var resposta = new ResponseMessage();
+            try
+            {
+                var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == id);
+
+
+                // alteração do status da entidade                   
+                colaboradorEncontrado.Status = true;
+
+                // salvando os dados
+                _context.SaveChanges();
+
+                resposta.Message = "Cadastro do colaborador habilitado com sucesso";
+                return resposta;
+
+            }
+            catch (Exception erro)
+            {
+                resposta.Message = "Erro interno na solicitação de habilitar cadastro do colaborador";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao habilitar colaborador de id {id}", id);
                 return resposta;
             }
         }

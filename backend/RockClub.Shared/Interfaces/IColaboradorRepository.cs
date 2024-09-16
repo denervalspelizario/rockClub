@@ -10,6 +10,7 @@ namespace RockClub.Shared.Interfaces
         Task<ResponseBase<List<ColaboradorModel>>> ListarColaboradores();
         Task<ResponseBase<ColaboradorModel>> UpdateColaborador(ColaboradorModel colaborador);
         Task<ResponseMessage> DesabilitarColaborador(Guid id);
+        Task<ResponseMessage> HabilitarColaborador(Guid id);
         Task<bool> VerificacaoEmail(string email);
         Task<bool> VerificacaoCpf(string cpf);
         Task<bool> VerificacaoTelefone(string telefone);
