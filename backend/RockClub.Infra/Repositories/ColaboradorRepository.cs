@@ -95,10 +95,55 @@ namespace RockClub.Infra.Repositories
             }
         }
 
+        public async Task<ResponseBase<ColaboradorModel>> UpdateColaborador(ColaboradorModel colaborador)
+        {
+            // formatação de resposta
+            var resposta = new ResponseBase<ColaboradorModel>();
+
+            try
+            {
+                
+                var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == colaborador.Id);
+
+                Console.WriteLine($"\n dado colaboradorEncontrado {colaboradorEncontrado.Email} \n");
+
+
+                // alterando tabela com dados adm por dados admAtualizado
+                _context.Colaborador.Entry(colaboradorEncontrado).CurrentValues.SetValues(colaborador);
+
+                // salvando no db
+                await _context.SaveChangesAsync();
+
+                // buscando novo colaborador no db
+                var colaboradorAlterado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == colaborador.Id);
+
+                Console.WriteLine($"\n dado colaboradorAlterado {colaboradorAlterado.Email} \n");
+
+
+                // adicionando respostas de sucesso 
+                resposta.Dados = colaboradorAlterado;
+                resposta.Status = colaboradorAlterado.Status;
+                resposta.Mensagem = "Dados Alterados com Sucesso";
+
+                // retornando o objeto de resposta
+                return resposta;
+            }
+            catch (Exception erro)
+            {
+                resposta.Mensagem = "Erro interno na solicitação de alteracao de dados do colaborador";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao alterar cadados o colaborador {Nome}", colaborador.Nome);
+                return resposta;
+            }
+        }
+
+        public async Task<bool> BuscarUserPorId(Guid id)
+        {
+            return await _context.Colaborador.AnyAsync(x => x.Id == id);
+        }
+
         public async Task<bool> VerificacaoCpf(string cpf)
         {
             return await _context.Colaborador.AnyAsync(x => x.Cpf == cpf);
-            
         }
 
         public async Task<bool> VerificacaoEmail(string email)
@@ -113,6 +158,44 @@ namespace RockClub.Infra.Repositories
 
         }
 
-       
+        public async Task<string> VerificacaoDadosUnicos(Guid id, string email, string cpf, string telefone)
+        {
+
+            var resposta = "";
+
+
+            var emailDuplicado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Email == email);
+
+            if (emailDuplicado != null && emailDuplicado.Id != id)
+            {
+                resposta = "Email já cadastrado por outro colaborador";
+                return resposta;
+            }
+
+            // cpf ja existe?
+            var cpfDuplicado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Cpf == cpf);
+
+            // o cpf existe e ele esta em um cadastro diferente
+            if (cpfDuplicado != null && cpfDuplicado.Id != id)
+            {
+                resposta = "Cpf já cadastrado por outro colaborador";
+                return resposta;
+            }
+
+            // telefone ja existe?
+            var telefoneDuplicado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Telefone == telefone);
+
+            // o cpf existe e ele esta em um cadastro diferente
+            if (telefoneDuplicado != null && telefoneDuplicado.Id != id)
+            {
+                resposta = "Telefone já cadastrado por outro colaborador";
+                return resposta;
+            }
+
+            resposta = "Dados não usados por outro usuario";
+            return resposta;
+        }
+
+
     }
 }

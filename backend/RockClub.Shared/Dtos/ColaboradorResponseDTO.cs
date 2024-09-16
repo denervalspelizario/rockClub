@@ -6,39 +6,39 @@ namespace RockClub.Shared.Dtos
 {
     public class ColaboradorResponseDTO
     {
-        public Guid Colaborador_id { get; set; }
-        public string? Nome { get; set; }
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
 
         [Column(TypeName = "date")]
         public string Data_nascimento { get; set; }
-        public string? Cpf { get; set; }
-        public string? Endereco { get; set; }
-        public string? Sexo { get; set; }
-        public string? Telefone { get; set; }
-        public string? Email { get; set; }
+        public string Cpf { get; set; }
+        public string Endereco { get; set; }
+        public string Sexo { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
 
         [Column(TypeName = "date")]
         public string Data_admissao { get; set; }
-        public string? Cargo { get; set; }
-        public decimal? Salario { get; set; }
-        public string? Departamento { get; set; }
+        public string Cargo { get; set; }
+        public decimal Salario { get; set; }
+        public string Departamento { get; set; }
 
 
         public ColaboradorResponseDTO
-            (Guid colaborador_id,
-            string? nome,
+            (Guid id,
+            string nome,
             string data_nascimento,
-            string? cpf, 
-            string? endereco,
-            string? sexo,
-            string? telefone,
-            string? email,
+            string cpf, 
+            string endereco,
+            string sexo,
+            string telefone,
+            string email,
             string data_admissao,
-            string? cargo,
-            decimal? salario,
-            string? departamento)
+            string cargo,
+            decimal salario,
+            string departamento)
         {
-            Colaborador_id = colaborador_id;
+            Id = id;
             Nome = nome;
             Data_nascimento = data_nascimento;
             Cpf = cpf;

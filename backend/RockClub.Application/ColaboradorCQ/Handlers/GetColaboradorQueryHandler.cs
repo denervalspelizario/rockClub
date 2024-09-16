@@ -23,6 +23,15 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
             // formatação de resposta
             var resposta = new ResponseBase<ColaboradorResponseDTO>();
 
+            // validações
+            var usuarioValido = await _colaboradorRepository.BuscarUserPorId(request.Id);
+
+            if (usuarioValido is false)
+            {
+                resposta.Mensagem = "Colaborador não encontrado";
+                return resposta;
+            }
+
             // chamado metodo que lista do repositório
             var respostaColaborador = await _colaboradorRepository.BuscarColaborador(request.Id);
 

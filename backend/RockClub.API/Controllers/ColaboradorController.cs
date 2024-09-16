@@ -29,7 +29,7 @@ namespace RockClub.API.Controllers
 
             if (request.Mensagem == "Dados Adicionandos com Sucesso")
             {
-                return Ok(request.Dados);
+                return Ok(request);
             }
             return BadRequest(request.Mensagem);
         }
@@ -42,7 +42,7 @@ namespace RockClub.API.Controllers
 
             if (request.Mensagem == "Requisição efetuado com sucesso")
             {
-                return Ok(request.Dados);
+                return Ok(request);
             }
             return BadRequest(request.Mensagem);
         }
@@ -50,14 +50,27 @@ namespace RockClub.API.Controllers
         
         [HttpGet]
         [Route("buscaColaborador/{id:guid}")]
-        public async Task<IActionResult> buscaColaborador(Guid id)
+        public async Task<IActionResult> BuscaColaborador(Guid id)
         {
-            
             var request = await _mediator.Send(new GetColaboradorQuery{ Id = id });
 
             if (request.Mensagem == "Dados de coloborador buscado com sucesso")
             {
-                return Ok(request.Dados);
+                return Ok(request);
+            }
+            return BadRequest(request.Mensagem);
+        }
+
+        [HttpPut]
+        [Route("atualizarColaborador/")]
+        [SwaggerRequestExample(typeof(UpdateColaboradorCommand), typeof(ColaboradorUpdateSchema))]
+        public async Task<IActionResult> AtualizarColaborador(UpdateColaboradorCommand colaborador)
+        {
+            var request = await _mediator.Send(colaborador);
+
+            if (request.Mensagem == "Dados Alterados com Sucesso")
+            {
+                return Ok(request);
             }
             return BadRequest(request.Mensagem);
         }
