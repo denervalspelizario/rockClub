@@ -101,6 +101,18 @@ namespace RockClub.API.Controllers
             return BadRequest(request.Message);
         }
 
+        [HttpDelete]
+        [Route("deletarColaborador/{id:guid}")]
+        public async Task<IActionResult> DeletarColaborador(Guid id)
+        {
+            var request = await _mediator.Send(new DeleteColaboradorCommand { Id = id });
+
+            if (request.Message == "Cadastro do colaborador deletado com sucesso")
+            {
+                return Ok(request);
+            }
+            return BadRequest(request.Message);
+        }
     }
 }
 

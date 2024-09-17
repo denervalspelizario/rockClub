@@ -181,6 +181,31 @@ namespace RockClub.Infra.Repositories
                 return resposta;
             }
         }
+
+        public async Task<ResponseMessage> DeletarColaborador(Guid id)
+        {
+            var resposta = new ResponseMessage();
+            try
+            {
+                var colaboradorEncontrado = await _context.Colaborador.FirstOrDefaultAsync(x => x.Id == id);
+
+                // removendo entidade do bd
+                _context.Colaborador.Remove(colaboradorEncontrado);
+
+                // salvando os dados
+                _context.SaveChanges();
+
+                resposta.Message = "Cadastro do colaborador deletado com sucesso";
+                return resposta;
+
+            }
+            catch (Exception erro)
+            {
+                resposta.Message = "Erro interno na solicitação de deletar cadastro do colaborador";
+                _logger.LogError(erro.Message, "Ocorreu um erro ao deletar colaborador de id {id}", id);
+                return resposta;
+            }
+        }
         public async Task<bool> BuscarUserPorId(Guid id)
         {
             return await _context.Colaborador.AnyAsync(x => x.Id == id);
@@ -256,5 +281,7 @@ namespace RockClub.Infra.Repositories
 
             return status;
         }
+
+       
     }
 }
