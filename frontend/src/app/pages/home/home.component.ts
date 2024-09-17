@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+import { ColaboradorService } from '../../service/colaborador.service';
+import { ColaboradorResponseListDTO } from './../../models/ColaboradorResponseListDTO';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [ CommonModule,
+    HttpClientModule],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
+})
+export class HomeComponent implements OnInit{
+
+  // variavel vazia que vai receber os colaboradoresList
+  colaboradoresList?: ColaboradorResponseListDTO[] = [];
+
+  // variavel vazia que vai receber os colaboradoresList
+  colaboradoresListGeral?: ColaboradorResponseListDTO[] = [];
+
+
+  // criando construtor para gerar  a Injeção de dependencia
+  constructor( private colaboradorService: ColaboradorService){}
+
+  ngOnInit(): void {
+
+    this.colaboradorService.GetColaborador().subscribe(data => {
+
+      // se caso eu fosse tratar algum dado vindo do back eu faria dentro desse map
+      const dados = data.dados; // pegando objeto dados da requisição
+
+      dados?.map((item) => {
+
+      })
+
+      console.log(data.dados)
+
+      // como não vou tratar nenhum dado adiciono direto
+      this.colaboradoresList = data.dados
+      this.colaboradoresListGeral = data.dados
+
+    })
+  }
+
+}

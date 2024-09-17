@@ -31,6 +31,14 @@ namespace RockClub.API
             builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(
                     typeof(CreateColaboradorCommand).Assembly));
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowMyOrigin",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
+
         }
 
         // metodo para uso do contexto do database

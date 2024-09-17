@@ -1,0 +1,47 @@
+<div class="funcionario-box">
+  <button>Cadastrar novo funcionario</button>
+  <div class="input-box">
+    <label>Procurar:</label>
+    <input type="text" placeholder="Qual registro esta buscando">
+  </div>
+</div>
+
+
+
+<!--   TABELA ONDE FICA OS DADOS  -->
+<table>
+  <!-- Parte de cima da tabela -->
+  <thead>
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Cargo</th>
+      <th>Departamento</th>
+    </tr>
+  </thead>
+
+  <!-- Corpo da tabela-->
+  <tbody *ngFor="let colaborador of colaboradoresList">
+    <tr>
+       <!--  Dados -->
+        <td>
+          <img src="assets/images/Ativo.png" alt=""style="height: 20px; width: 20px;">
+          <img src="assets/images/Inativo.png" alt=""style="height: 20px; width: 20px;">
+        </td>
+        <td>{{colaborador.id}}</td>
+        <td>{{colaborador.nome}}</td>
+        <td>{{colaborador.cargo}}</td>
+        <td>{{colaborador.departamento}}</td>
+
+         <!-- Botões de ação-->
+        <td>
+          <button>Editar</button>
+          <button>Detalhes</button>
+        </td>
+        <td>
+          <button>Excluir</button>
+        </td>
+    </tr>
+  </tbody>
+</table>

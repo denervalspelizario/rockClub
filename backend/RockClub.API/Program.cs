@@ -22,6 +22,9 @@ if (app.Environment.IsDevelopment())
 
 }
 
+// Configurar o pipeline HTTP
+app.UseCors("AllowMyOrigin");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

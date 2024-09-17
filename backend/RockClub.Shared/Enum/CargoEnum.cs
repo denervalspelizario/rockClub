@@ -11,9 +11,9 @@ namespace RockClub.Shared.Enum
         Gerente = 5,
         Caixa = 6,
         DJ = 7,
-        AssistenteDeLimpeza = 7,
-        PromotorDeEventos = 8,
-        Musico = 9,
-        TecnicoDeSom = 10
+        AssistenteDeLimpeza = 8,
+        PromotorDeEventos = 9,
+        Musico = 10,
+        TecnicoDeSom = 11
     }
 }
