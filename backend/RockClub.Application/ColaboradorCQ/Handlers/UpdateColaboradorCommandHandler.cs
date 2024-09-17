@@ -33,14 +33,21 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
 
 
             // validações
-            var usuarioValido = await _colaboradorRepository.BuscarUserPorId(request.Id);
+            var colaboradorExiste = await _colaboradorRepository.BuscarUserPorId(request.Id);
 
-            if (usuarioValido is false)
+            if (colaboradorExiste is false)
             {
                 resposta.Mensagem = "Colaborador não encontrado";
                 return resposta;
             }
 
+            var statusColaborador = await _colaboradorRepository.BuscarColaborador(request.Id);
+
+            if (statusColaborador.Dados.Status == false)
+            {
+                resposta.Mensagem = "Cadastro do colaborador está desabilitado";
+                return resposta;
+            }
 
             var validacaoDadosUnicos = await _colaboradorRepository.VerificacaoDadosUnicos(
                 request.Id,request.Email,request.Cpf, request.Telefone);
