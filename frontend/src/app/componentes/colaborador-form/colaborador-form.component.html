@@ -1,0 +1,77 @@
+<h1>Cadastrar Colaborador</h1>
+
+
+<!--#formDit="ngForm"-->
+
+<form [formGroup]="colaboradorForm" (ngSubmit)="submit()">
+
+  <div class="input_box">
+
+    <label for="nome">Nome Completo</label>
+    <input type="text" formControlName="Nome" placeholder="Nome completo" required>
+
+    <!--  mudar a entrada de data la na api tem que se assim  yyyy/mm/dd-->
+    <label for="datanascimento">Data Nascimento</label>
+    <input type="text" formControlName="Data_nascimento" placeholder="Data nascimento" required>
+
+    <label for="">Cpf</label>
+    <input type="text" formControlName="Cpf" placeholder="Cpf" required>
+
+    <label for="">Endereço</label>
+    <input type="text" formControlName="Endereco" placeholder="Endereço" required>
+
+    <label for="sexo">Sexo</label>
+    <select id="sexo" formControlName="Sexo" required>
+      <option [ngValue]="sexo.Masculino">Masculino</option>
+      <option [ngValue]="sexo.Feminino">Feminimo</option>
+      <option [ngValue]="sexo.PrefiroNaoInformar">Prefiro não informar</option>
+      <option [ngValue]="sexo.Outro">Outro</option>
+    </select>
+
+    <label for="">Celular</label>
+    <input type="text" formControlName="Telefone" placeholder="Telefone" required>
+
+    <label for="">Email</label>
+    <input type="email" formControlName="Email" placeholder="Email" required>
+
+    <label for="">Salario</label>
+    <input type="number" formControlName="Salario" placeholder="Salario" required>
+
+    <label>Cargo</label>
+    <select id="cargo" formControlName="Cargo" required>
+      <option [ngValue]="cargo.Barman">Barman</option>
+      <option [ngValue]="cargo.Garcom">Garçom</option>
+      <option [ngValue]="cargo.Cozinheiro">Cozinheiro(a)</option>
+      <option [ngValue]="cargo.Seguranca">Segurança</option>
+      <option [ngValue]="cargo.Gerente">Gerente</option>
+      <option [ngValue]="cargo.Caixa">Caixa</option>
+      <option [ngValue]="cargo.DJ">Dj</option>
+      <option [ngValue]="cargo.AssistenteDeLimpeza">Assistente Limpeza</option>
+      <option [ngValue]="cargo.PromotorDeEventos">Promotor Eventos</option>
+      <option [ngValue]="cargo.Musico">Musico</option>
+      <option [ngValue]="cargo.TecnicoDeSom">Tecnico de Som</option>
+    </select>
+
+    <label for="departamento">Departamento</label>
+    <select id="departamento" formControlName="Departamento" required>
+      <option [ngValue]="departamento.Administrativo">Administrativo</option>
+      <option [ngValue]="departamento.Gerencia">Gerência</option>
+      <option [ngValue]="departamento.Atendimento">Atendimento</option>
+      <option [ngValue]="departamento.Limpeza">Limpeza</option>
+      <option [ngValue]="departamento.Manutencao">Manutenção</option>
+      <option [ngValue]="departamento.Marketing">Marketing</option>
+      <option [ngValue]="departamento.Cozinha">Cozinha</option>
+      <option [ngValue]="departamento.Bar">Bar</option>
+    </select>
+
+
+  </div>
+  <div>
+    <!-- botao só estara disponivel se usuario digitar todo cadastro -->
+    <button type="submit" [disabled]="!colaboradorForm.valid" >Cadastrar</button>
+
+    <!-- botão que o clicar volta para -->
+    <button routerLink="" >Voltar</button>
+  </div>
+
+</form>

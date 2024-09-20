@@ -43,19 +43,20 @@ namespace RockClub.Application.ColaboradorCQ.Handlers
             // adicionando todos os colaboradores na lista de objetos resposta
             foreach (var colaborador in respostaListaColaborador.Dados)
             {
-                if (colaborador.Status == true)
-                {
+                
                     var colaboradorFormatado = new ColaboradorResponseListDTO
                     (
                         colaborador.Id,
                         colaborador.Nome,
                         colaborador.Email,
                         colaborador.Cargo.ToString(),
-                        colaborador.Departamento.ToString()
+                        colaborador.Departamento.ToString(),
+                        colaborador.Status
+                        
                     );
 
                     listaColaboradoresResposta.Add(colaboradorFormatado);
-                }
+                
             }
 
             // resposta estrutura
