@@ -1,6 +1,13 @@
 <div>
-  <!-- componente de formulário que recebe os dados do formulário -->
-  <app-colaborador-form (onSubmit)="createColaborador($event)" ></app-colaborador-form>
+  <!-- componente de formulário que recebe os dados do formulário
+        onSubmit -->
+  <!--   -->
+  <app-colaborador-form
+    [btnAcao]="btnAcao"
+    [btnTitulo]="btnTitulo"
+    (onSubmit)="createColaborador($event)" >
+
+  </app-colaborador-form>
 </div>
 
 

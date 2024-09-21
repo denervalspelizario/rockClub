@@ -3,6 +3,7 @@ import { ColaboradorFormComponent } from "../../componentes/colaborador-form/col
 import { ColaboradorCreateDTO } from '../../models/ColaboradorCreateDTO';
 import { ColaboradorService } from '../../service/colaborador.service';
 import { Router } from '@angular/router';
+import { ColaboradorResponseDTO } from '../../models/ColaboradorResponseDTO';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,6 +14,9 @@ import { Router } from '@angular/router';
 })
 export class CadastroComponent {
 
+  btnAcao = "Cadastrar!"
+  btnTitulo = "Cadastrar colaborador"
+
   // fazendo a injeção de dependencia do colaboradorService e router
   constructor(
     private colaboradorService: ColaboradorService,
@@ -20,7 +24,6 @@ export class CadastroComponent {
     ){
 
   }
-
 
 
   // função que recebe os dados la do formulario(colaborador-form)

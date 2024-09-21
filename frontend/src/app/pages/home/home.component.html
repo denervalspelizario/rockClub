@@ -49,8 +49,14 @@
 
          <!-- Botões de ação-->
         <td>
-          <button>Editar</button>
-          <button>Detalhes</button>
+
+          <!-- ao clicar no botao irá ir para a page editar -->
+          <button
+            [disabled]="colaborador.status == false"
+            routerLink="/editarColaborador/{{colaborador.id}}"
+            >Editar</button>
+
+          <button >Detalhes</button>
         </td>
         <td>
           <button>Excluir</button>

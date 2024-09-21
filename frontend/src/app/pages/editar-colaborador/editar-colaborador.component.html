@@ -1,8 +1,10 @@
 <!-- btnTitulo props recebida do html da pages cadastro -->
-<h1>{{btnTitulo}}</h1>
+<h1>Editar Colaborador  {{colaboradorNome}}</h1>
 
 
-<form [formGroup]="colaboradorForm" (ngSubmit)="submit()">
+<!--#formDit="ngForm"-->
+
+<form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm" (ngSubmit)="submit()">
 
   <!-- como aqui vai ser reultilizado tanto no create como update
        no update precisa do id então como colocar o id como hidden
@@ -16,12 +18,16 @@
 
   <div class="input_box">
 
+    <label for="nome">Id</label>
+    <input type="text" formControlName="Id" placeholder="Id do usuario" required>
+
     <label for="nome">Nome Completo</label>
     <input type="text" formControlName="Nome" placeholder="Nome completo" required>
 
     <!--  mudar a entrada de data la na api tem que se assim  yyyy/mm/dd-->
     <label for="datanascimento">Data Nascimento</label>
     <input type="text" formControlName="Data_nascimento" placeholder="Data nascimento" required>
+
 
     <label for="">Cpf</label>
     <input type="text" formControlName="Cpf" placeholder="Cpf" required>
@@ -42,6 +48,9 @@
 
     <label for="">Email</label>
     <input type="email" formControlName="Email" placeholder="Email" required>
+
+    <label for="datadmissao">Data Admissão</label>
+    <input type="text" formControlName="Data_Admissao" placeholder="Data admissao" required>
 
     <label for="">Salario</label>
     <input type="number" formControlName="Salario" placeholder="Salario" required>
@@ -81,9 +90,7 @@
   </div>
   <div>
     <!-- botao só estara disponivel se usuario digitar todo cadastro -->
-    <!-- btnAcao props recebida do html da pages cadastro -->
-    <button type="submit" [disabled]="!colaboradorForm.valid" >{{btnAcao}}</button>
-
+    <button type="submit" [disabled]="!colaboradorForm.valid" >Editar</button>
     <!-- botão que o clicar volta para -->
     <button routerLink="" >Voltar</button>
   </div>

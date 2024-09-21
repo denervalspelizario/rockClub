@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit{
       // se caso eu fosse tratar algum dado vindo do back eu faria dentro desse map
       const dados = data.dados; // pegando objeto dados da requisição
 
+
+
       dados?.map((item) => {
 
       })
@@ -56,6 +58,7 @@ export class HomeComponent implements OnInit{
 
     // fazendo o filtro baseado no que esta digitado no input
     this.colaboradoresList = this.colaboradoresListGeral?.filter(colaborador => {
+
       return colaborador.nome.toLowerCase().includes(value)
     })
 
