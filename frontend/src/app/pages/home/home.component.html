@@ -56,7 +56,12 @@
             routerLink="/editarColaborador/{{colaborador.id}}"
             >Editar</button>
 
-          <button >Detalhes</button>
+          <!-- ao clicar no botao irá ir para a page editar -->
+          <button
+          routerLink="/detalhesColaborador/{{colaborador.id}}"
+          >
+            Detalhes
+          </button>
         </td>
         <td>
           <button>Excluir</button>

@@ -28,7 +28,8 @@ export class EditarColaboradorComponent {
   cargo = CargoEnum;
   departamento = DepartamentoEnum;
   sexo = SexoEnum;
-  //colaboradorRecebeDados?: ColaboradorResponseDTO ; // variavel tipo ColaboradorResponseDTO
+
+
   dadosColaborador: ColaboradorResponseDTO | null = null;
   dadosColaboradorUpdate!: ColaboradorUpdateDTO
   colaboradorNome:string = "";
@@ -38,17 +39,13 @@ export class EditarColaboradorComponent {
   constructor(
     private colaboradorService: ColaboradorService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {
-
-  }
+    private router: Router){}
 
 
 
 
   // sera inicializado assim que usuario ir neste pagina
   ngOnInit(): void {
-
 
     // pegando o id do colaborador pela url(no caso id do usar para editar)
     const id = this.route.snapshot.paramMap.get('id')

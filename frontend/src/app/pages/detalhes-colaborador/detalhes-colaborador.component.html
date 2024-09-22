@@ -1,0 +1,79 @@
+<div>
+  <h1>Detalhes Colaborador {{nomeColaborador}} </h1>
+</div>
+
+<div>
+  <form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm">
+
+    <div class="input-box">
+      <label>Id : </label>
+      <input type="text" formControlName="Id">
+    </div>
+
+    <div class="input-box">
+      <label>Nome : </label>
+      <input type="text" formControlName="Nome">
+    </div>
+
+    <div class="input-box">
+      <label>Data_nascimento : </label>
+      <input type="text" formControlName="Data_nascimento">
+    </div>
+
+    <div class="input-box">
+      <label>Cpf : </label>
+      <input type="text" formControlName="Cpf">
+    </div>
+
+    <div class="input-box">
+      <label>Endereço : </label>
+      <input type="text" formControlName="Endereco">
+    </div>
+
+    <div class="input-box">
+      <label>Sexo : </label>
+      <input type="text" formControlName="Sexo">
+    </div>
+
+    <div class="input-box">
+      <label>Telefone : </label>
+      <input type="text" formControlName="Telefone">
+    </div>
+
+    <div class="input-box">
+      <label>Email : </label>
+      <input type="text" formControlName="Email">
+    </div>
+
+    <div class="input-box">
+      <label>Data_admissão : </label>
+      <input type="text" formControlName="Data_Admissao">
+    </div>
+
+    <div class="input-box">
+      <label>Cargo : </label>
+      <input type="text" formControlName="Cargo">
+    </div>
+
+    <div class="input-box">
+      <label>Salário : </label>
+      <input type="text" formControlName="Salario">
+    </div>
+
+    <div class="input-box">
+      <label>Departamento : </label>
+      <input type="text" formControlName="Departamento">
+    </div>
+
+    <div class="input-box">
+      <label>Status : </label>
+      <input type="text" formControlName="Status">
+    </div>
+
+    <div class="btn-box">
+      <button>Desativar Colaborador</button>
+      <button routerLink="/" >Voltar</button>
+    </div>
+
+  </form>
+</div>
