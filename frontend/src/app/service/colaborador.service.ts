@@ -18,20 +18,23 @@ export class ColaboradorService {
   // pegando a variavel da url de listagem de colaborador
   private apiUrl = `${environment.ApiUrl}/Colaborador/listagemColaboradores`
 
-// pegando a variavel da url de buscar de colaborador por id
+  // pegando a variavel da url de buscar de colaborador por id
   private apiUrlBuscarColaboradorPorId = `${environment.ApiUrl}/Colaborador/buscaColaborador`
 
-// pegando a variavel da url de adicao de colaborador
+  // pegando a variavel da url de adicao de colaborador
   private apiUrlAddColaborador = `${environment.ApiUrl}/Colaborador/adicionarColaborador`
 
-// pegando a variavel da url de adicao de colaborador
+  // pegando a variavel da url de adicao de colaborador
   private apiUrlUpdateColaborador = `${environment.ApiUrl}/Colaborador/atualizarColaborador`
 
-// pegando a variavel da url de adicao de colaborador
+  // pegando a variavel da url de adicao de colaborador
   private apiUrlDesabilitarColaborador = `${environment.ApiUrl}/Colaborador/desabilitarColaborador`
 
-// pegando a variavel da url de adicao de colaborador
+  // pegando a variavel da url de adicao de colaborador
   private apiUrlHabilitarColaborador = `${environment.ApiUrl}/Colaborador/habilitarColaborador`
+
+  // pegando a variavel da url de adicao de colaborador
+  private apiUrlDeletarColaborador = `${environment.ApiUrl}/Colaborador/deletarColaborador`
 
   // importanto o httpclint via injeção de dependencia
   constructor(private http: HttpClient) { }
@@ -63,14 +66,16 @@ export class ColaboradorService {
   }
 
 
-
-
   // método de desabilitar colaborador
   DesabilitarColaborador(id: string | null): Observable<ResponseMessage> {
     return this.http.patch<ResponseMessage>(`${this.apiUrlDesabilitarColaborador}/${id}`, {});
   }
 
 
+  // método de deletar colaborador
+  DeletarColaborador(id: string | null): Observable<ResponseMessage> {
+    return this.http.delete<ResponseMessage>(`${this.apiUrlDeletarColaborador}/${id}`, {});
+  }
 
 
 }

@@ -3,6 +3,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditarColaboradorComponent } from './pages/editar-colaborador/editar-colaborador.component';
 import { DetalhesColaboradorComponent } from './pages/detalhes-colaborador/detalhes-colaborador.component';
+import { DeletarColaboradorComponent } from './pages/deletar-colaborador/deletar-colaborador.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,15 @@ export const routes: Routes = [
   {
     path: 'detalhesColaborador/:id', // a rota que ira exibir detalhes do colaborador
     component: DetalhesColaboradorComponent
+  },
+  {
+    path: 'deletarColaborador/:id', // a rota que ira detelar usuario
+    component: DeletarColaboradorComponent
   }
+
+
+
+
+
+
 ];
