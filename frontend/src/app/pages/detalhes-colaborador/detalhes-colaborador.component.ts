@@ -7,6 +7,7 @@ import { DepartamentoEnum } from '../../models/DepartamentoEnum';
 import { SexoEnum } from '../../models/SexoEnum';
 import { ColaboradorService } from '../../service/colaborador.service';
 import { ColaboradorResponseDTO } from '../../models/ColaboradorResponseDTO';
+import { ResponseMessage } from '../../models/ResponseMessage';
 
 @Component({
   selector: 'app-detalhes-colaborador',
@@ -26,6 +27,8 @@ export class DetalhesColaboradorComponent {
   dadosColaborador!: ColaboradorResponseDTO
   nomeColaborador!: string
   statusColaborador!: string
+  botaoStatus!: string
+  dadoStatus!: boolean | undefined
 
   // Injeções de dependência
   constructor(
@@ -51,23 +54,20 @@ export class DetalhesColaboradorComponent {
       if(data.status === true)
       {
         this.statusColaborador = "Ativo"
+        this.botaoStatus = "Desabilitar Colaborador"
       } else {
         this.statusColaborador = "Desabilitado"
+        this.botaoStatus = "Habilitar Colaborador"
       }
-
-      // pegando status do colaborador
-
 
       // adicionando os dados buscado do metodo getColaboradorId
       // na variavel dadosColaborador
       this.dadosColaborador = data.dados;
 
-
       // os campos do html do formulário será preenchido com dados do colaborador
       this.colaboradorForm = new FormGroup({
 
         Id: new FormControl({ value: this.dadosColaborador ? this.dadosColaborador.id : '', disabled: true }),
-
 
         Nome: new FormControl({ value: this.dadosColaborador ? this.dadosColaborador.nome : '', disabled: true }),
 
@@ -97,4 +97,76 @@ export class DetalhesColaboradorComponent {
     })
 
   }
+
+  // função que atualiza status
+  atualizarStatus(){
+
+    // pegando o id do colaborador pela url
+    const id = this.route.snapshot.paramMap.get('id')
+
+    // se status for true
+    if(this.statusColaborador === "Ativo")
+    {
+
+      // desabilita status
+      this.colaboradorService.DesabilitarColaborador(id).subscribe((data) => {
+
+      })
+
+       // pegar dado do usuario apos desabilitar
+       this.colaboradorService.GetColaboradorId(id).subscribe((data) => {
+
+        console.log(data.status)
+        this.dadoStatus = data.status
+
+        if(this.dadoStatus === true)
+          {
+
+            // atualiza botão e status no campo do formulário
+            this.statusColaborador = "Desabilitado"
+            this.botaoStatus = "Habilitar Colaborador"
+          }
+      })
+
+
+
+    }
+
+    // se status for false
+    if(this.statusColaborador === "Desabilitado")
+    {
+
+
+      // habilitar status
+      this.colaboradorService.HabilitarColaborador(id).subscribe((data) => {
+
+      })
+
+      // pegar dado do usuario apos habilitar
+      this.colaboradorService.GetColaboradorId(id).subscribe((data) => {
+
+        console.log(data.status)
+        this.dadoStatus = data.status
+        if(this.dadoStatus === false)
+          {
+            // atualiza botão e status no campo do formulário
+            this.statusColaborador = "Ativo"
+            this.botaoStatus = "Desabilitar Colaborador"
+          }
+      })
+
+
+
+    }
+  }
+
+  // botão do formulário que ao clicar...
+  submit(){
+
+    // chama a função que edita coloborador que recebe os dados do formulario
+    this.atualizarStatus()
+
+
+  }
+
 }

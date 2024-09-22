@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm">
+  <form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm" (ngSubmit)="submit()">
 
     <div class="input-box">
       <label>Id : </label>
@@ -71,7 +71,7 @@
     </div>
 
     <div class="btn-box">
-      <button>Desativar Colaborador</button>
+      <button type="submit">{{ botaoStatus }}</button>
       <button routerLink="/" >Voltar</button>
     </div>
 

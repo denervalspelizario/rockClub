@@ -2,19 +2,7 @@
 <h1>Editar Colaborador  {{colaboradorNome}}</h1>
 
 
-<!--#formDit="ngForm"-->
-
 <form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm" (ngSubmit)="submit()">
-
-  <!-- como aqui vai ser reultilizado tanto no create como update
-       no update precisa do id então como colocar o id como hidden
-       para ele não aparecer em tela  e vai ficar de fora da div input_box
-
-       <input type="hidden" formControlName="Id">
-
-       -->
-
-
 
   <div class="input_box">
 
