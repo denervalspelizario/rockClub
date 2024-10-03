@@ -8,10 +8,17 @@ import { SexoEnum } from '../../models/SexoEnum';
 import { ColaboradorResponseDTO } from '../../models/ColaboradorResponseDTO';
 import { ColaboradorService } from '../../service/colaborador.service';
 
+// angular material
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
 @Component({
   selector: 'app-deletar-colaborador',
   standalone: true,
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, RouterLink ],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule, RouterLink, MatButtonModule, MatCardModule, MatInputModule, MatSelectModule ],
   templateUrl: './deletar-colaborador.component.html',
   styleUrl: './deletar-colaborador.component.css'
 })

@@ -2,12 +2,25 @@
 <!--  PARTE DE BUSCA  -->
 <div class="funcionario-box">
 
+
+  <mat-form-field class="search">
+    <mat-label>Procurar : </mat-label>
+    <input matInput placeholder="Qual registro esta buscando" (input)="search($event)">
+  </mat-form-field>
+
+  <br>
+
   <!-- cliclou no botao redireciona ao cadastro -->
-  <button routerLink="cadastro" routerLinkActive="router-link-active" >Cadastrar novo funcionario</button>
-  <div class="input-box">
-    <label>Procurar:</label>
-    <input type="text" placeholder="Qual registro esta buscando" (input)="search($event)" >
-  </div>
+  <button
+    routerLink="cadastro"
+    routerLinkActive="router-link-active"
+    mat-raised-button
+    >
+    Cadastrar novo funcionario
+  </button>
+
+
+
 </div>
 
 
@@ -49,23 +62,30 @@
 
          <!-- Botões de ação-->
         <td>
-
           <!-- ao clicar no botao irá ir para a page editar -->
           <button
             [disabled]="colaborador.status == false"
             routerLink="/editarColaborador/{{colaborador.id}}"
-            >Editar</button>
+            mat-raised-button
+            >Editar
+          </button>
+        </td>
 
+        <td>
           <!-- ao clicar no botao irá ir para a page editar -->
           <button
-          routerLink="/detalhesColaborador/{{colaborador.id}}"
+            routerLink="/detalhesColaborador/{{colaborador.id}}"
+            mat-raised-button
           >
             Detalhes
           </button>
         </td>
+
+
         <td>
           <button
-          routerLink="/deletarColaborador/{{colaborador.id}}"
+            routerLink="/deletarColaborador/{{colaborador.id}}"
+            mat-raised-button
           >
             Excluir
           </button>

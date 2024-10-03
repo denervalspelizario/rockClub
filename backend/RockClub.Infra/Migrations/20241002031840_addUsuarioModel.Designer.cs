@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RockClub.Infra.Persistence;
 
@@ -11,9 +12,11 @@ using RockClub.Infra.Persistence;
 namespace RockClub.Infra.Migrations
 {
     [DbContext(typeof(RockClubDbContext))]
-    partial class RockClubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241002031840_addUsuarioModel")]
+    partial class addUsuarioModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

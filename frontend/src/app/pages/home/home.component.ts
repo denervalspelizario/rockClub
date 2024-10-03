@@ -4,11 +4,15 @@ import { ColaboradorResponseListDTO } from './../../models/ColaboradorResponseLi
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ CommonModule, HttpClientModule, RouterLink],
+  imports: [ CommonModule, HttpClientModule, RouterLink, MatButtonModule, MatInputModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

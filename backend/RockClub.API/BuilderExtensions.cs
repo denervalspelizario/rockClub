@@ -64,6 +64,7 @@ namespace RockClub.API
         public static void AddInjections(this WebApplicationBuilder builder)
         {
             builder.Services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+            builder.Services.AddScoped<ISenhaRepository, SenhaRepository>();
         }
 
 

@@ -8,13 +8,22 @@ import { ColaboradorCreateDTO } from '../../models/ColaboradorCreateDTO';
 import { RouterLink } from '@angular/router';
 import { ColaboradorResponseDTO } from '../../models/ColaboradorResponseDTO';
 import { CommonModule } from '@angular/common';
-import { ColaboradorUpdateDTO } from '../../models/ColaboradorUpdateDTO';
+
+// angular material
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
+
+
 
 
 @Component({
   selector: 'app-colaborador-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, CommonModule, MatButtonModule, MatCardModule, MatInputModule, MatSelectModule],
   templateUrl: './colaborador-form.component.html',
   styleUrl: './colaborador-form.component.css'
 })

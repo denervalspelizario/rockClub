@@ -31,4 +31,9 @@
     <ProjectReference Include="..\RockClub.Shared\RockClub.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UsuarioCQ\Validators\" />
+    <Folder Include="UsuarioCQ\Queries\" />
+  </ItemGroup>
+
 </Project>

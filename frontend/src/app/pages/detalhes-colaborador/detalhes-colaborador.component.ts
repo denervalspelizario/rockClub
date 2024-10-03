@@ -8,11 +8,17 @@ import { SexoEnum } from '../../models/SexoEnum';
 import { ColaboradorService } from '../../service/colaborador.service';
 import { ColaboradorResponseDTO } from '../../models/ColaboradorResponseDTO';
 
+// angular material
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @Component({
   selector: 'app-detalhes-colaborador',
   standalone: true,
-  imports: [ CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule, RouterLink, MatButtonModule, MatCardModule, MatInputModule, MatSelectModule],
   templateUrl: './detalhes-colaborador.component.html',
   styleUrl: './detalhes-colaborador.component.css'
 })
@@ -49,8 +55,10 @@ export class DetalhesColaboradorComponent {
       // variavel recebe o nome para mostrar no html
       this.nomeColaborador = data.dados.nome
 
+      // implementando condição se user estiver true
       if(data.status === true)
       {
+        // status ficara Ativo e btn aparecera Desabilitar
         this.statusColaborador = "Ativo"
         this.botaoStatus = "Desabilitar Colaborador"
       } else {

@@ -1,86 +1,115 @@
 <!-- btnTitulo props recebida do html da pages cadastro -->
 <h1>Editar Colaborador  {{colaboradorNome}}</h1>
 
+<mat-card>
+  <form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm" (ngSubmit)="submit()">
 
-<form *ngIf="colaboradorForm"  [formGroup]="colaboradorForm" (ngSubmit)="submit()">
+    <div class="input_box">
 
-  <div class="input_box">
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="Id">
+      </mat-form-field>
 
-    <label for="nome">Id</label>
-    <input type="text" formControlName="Id" placeholder="Id do usuario" required>
+      <mat-form-field>
+        <mat-label>Nome Completo</mat-label>
+        <input matInput formControlName="Nome" placeholder="Nome completo">
+      </mat-form-field>
 
-    <label for="nome">Nome Completo</label>
-    <input type="text" formControlName="Nome" placeholder="Nome completo" required>
+      <mat-form-field>
+        <mat-label>Data Nascimento</mat-label>
+        <input matInput formControlName="Data_nascimento" placeholder="Data nascimento">
+      </mat-form-field>
 
-    <!--  mudar a entrada de data la na api tem que se assim  yyyy/mm/dd-->
-    <label for="datanascimento">Data Nascimento</label>
-    <input type="text" formControlName="Data_nascimento" placeholder="Data nascimento" required>
+      <mat-form-field>
+        <mat-label>Cpf</mat-label>
+        <input matInput formControlName="Cpf" placeholder="Cpf">
+      </mat-form-field>
 
 
-    <label for="">Cpf</label>
-    <input type="text" formControlName="Cpf" placeholder="Cpf" required>
+      <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <input matInput formControlName="Endereco" placeholder="Endereço">
+      </mat-form-field>
 
-    <label for="">Endereço</label>
-    <input type="text" formControlName="Endereco" placeholder="Endereço" required>
 
-    <label for="sexo">Sexo</label>
-    <select id="sexo" formControlName="Sexo" required>
-      <option [ngValue]="sexo.Masculino">Masculino</option>
-      <option [ngValue]="sexo.Feminino">Feminimo</option>
-      <option [ngValue]="sexo.PrefiroNaoInformar">Prefiro não informar</option>
-      <option [ngValue]="sexo.Outro">Outro</option>
-    </select>
+      <mat-form-field>
+        <mat-label>Sexo</mat-label>
+        <mat-select id="sexo" formControlName="Sexo" required>
+          <mat-option [value]="sexo.Masculino">Masculino</mat-option>
+          <mat-option [value]="sexo.Feminino">Feminino</mat-option>
+          <mat-option [value]="sexo.PrefiroNaoInformar">Prefiro não informar</mat-option>
+          <mat-option [value]="sexo.Outro">Outro</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <label for="">Celular</label>
-    <input type="text" formControlName="Telefone" placeholder="Telefone" required>
 
-    <label for="">Email</label>
-    <input type="email" formControlName="Email" placeholder="Email" required>
 
-    <label for="datadmissao">Data Admissão</label>
-    <input type="text" formControlName="Data_Admissao" placeholder="Data admissao" required>
+      <mat-form-field>
+        <mat-label>Celular</mat-label>
+        <input matInput formControlName="Telefone" placeholder="Telefone">
+      </mat-form-field>
 
-    <label for="">Salario</label>
-    <input type="number" formControlName="Salario" placeholder="Salario" required>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="Email" placeholder="Email">
+      </mat-form-field>
 
-    <label>Cargo</label>
-    <select id="cargo" formControlName="Cargo" required>
-      <option [ngValue]="cargo.Barman">Barman</option>
-      <option [ngValue]="cargo.Garcom">Garçom</option>
-      <option [ngValue]="cargo.Cozinheiro">Cozinheiro(a)</option>
-      <option [ngValue]="cargo.Seguranca">Segurança</option>
-      <option [ngValue]="cargo.Gerente">Gerente</option>
-      <option [ngValue]="cargo.Caixa">Caixa</option>
-      <option [ngValue]="cargo.DJ">Dj</option>
-      <option [ngValue]="cargo.AssistenteDeLimpeza">Assistente Limpeza</option>
-      <option [ngValue]="cargo.PromotorDeEventos">Promotor Eventos</option>
-      <option [ngValue]="cargo.Musico">Musico</option>
-      <option [ngValue]="cargo.TecnicoDeSom">Tecnico de Som</option>
-    </select>
+      <mat-form-field>
+        <mat-label>Data Admissão</mat-label>
+        <input matInput formControlName="Data_Admissao" placeholder="Data admissao">
+      </mat-form-field>
 
-    <label for="departamento">Departamento</label>
-    <select id="departamento" formControlName="Departamento" required>
-      <option [ngValue]="departamento.Administrativo">Administrativo</option>
-      <option [ngValue]="departamento.Gerencia">Gerência</option>
-      <option [ngValue]="departamento.Atendimento">Atendimento</option>
-      <option [ngValue]="departamento.Limpeza">Limpeza</option>
-      <option [ngValue]="departamento.Manutencao">Manutenção</option>
-      <option [ngValue]="departamento.Marketing">Marketing</option>
-      <option [ngValue]="departamento.Cozinha">Cozinha</option>
-      <option [ngValue]="departamento.Bar">Bar</option>
-    </select>
+      <mat-form-field>
+        <mat-label>Salario</mat-label>
+        <input matInput formControlName="Salario" placeholder="Salario">
+      </mat-form-field>
 
-    <div >
+      <mat-form-field>
+        <mat-label>Cargo</mat-label>
+        <mat-select formControlName="Cargo" required>
+          <mat-option [value]="cargo.Barman">Barman</mat-option>
+          <mat-option [value]="cargo.Garcom">Garçom</mat-option>
+          <mat-option [value]="cargo.Cozinheiro">Cozinheiro(a)</mat-option>
+          <mat-option [value]="cargo.Seguranca">Segurança</mat-option>
+          <mat-option [value]="cargo.Gerente">Gerente</mat-option>
+          <mat-option [value]="cargo.Caixa">Caixa</mat-option>
+          <mat-option [value]="cargo.DJ">DJ</mat-option>
+          <mat-option [value]="cargo.AssistenteDeLimpeza">Assistente Limpeza</mat-option>
+          <mat-option [value]="cargo.PromotorDeEventos">Promotor Eventos</mat-option>
+          <mat-option [value]="cargo.Musico">Músico</mat-option>
+          <mat-option [value]="cargo.TecnicoDeSom">Técnico de Som</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Departamento</mat-label>
+        <mat-select id="departamento" formControlName="Departamento" required>
+          <mat-option [value]="departamento.Administrativo">Administrativo</mat-option>
+          <mat-option [value]="departamento.Gerencia">Gerência</mat-option>
+          <mat-option [value]="departamento.Atendimento">Atendimento</mat-option>
+          <mat-option [value]="departamento.Limpeza">Limpeza</mat-option>
+          <mat-option [value]="departamento.Manutencao">Manutenção</mat-option>
+          <mat-option [value]="departamento.Marketing">Marketing</mat-option>
+          <mat-option [value]="departamento.Cozinha">Cozinha</mat-option>
+          <mat-option [value]="departamento.Bar">Bar</mat-option>
+        </mat-select>
+      </mat-form-field>
 
     </div>
+    <div>
+      <!-- botao só estara disponivel se usuario digitar todo cadastro -->
+      <button type="submit"
+        [disabled]="!colaboradorForm.valid"
+        mat-raised-button color="accent"
+        >Editar</button>
 
+        <!-- botão que o clicar volta para -->
+      <button
+        routerLink=""
+        mat-raised-button
+        >Voltar</button>
+    </div>
 
-  </div>
-  <div>
-    <!-- botao só estara disponivel se usuario digitar todo cadastro -->
-    <button type="submit" [disabled]="!colaboradorForm.valid" >Editar</button>
-    <!-- botão que o clicar volta para -->
-    <button routerLink="" >Voltar</button>
-  </div>
-
-</form>
+  </form>
+</mat-card>

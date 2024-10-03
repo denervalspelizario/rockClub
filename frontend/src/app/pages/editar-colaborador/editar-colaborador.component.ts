@@ -10,10 +10,16 @@ import { DepartamentoEnum } from '../../models/DepartamentoEnum';
 import { ColaboradorUpdateDTO } from '../../models/ColaboradorUpdateDTO';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
+// angular material
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
 @Component({
   selector: 'app-editar-colaborador',
   standalone: true,
-  imports: [ColaboradorFormComponent, CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [ColaboradorFormComponent, CommonModule, FormsModule, ReactiveFormsModule, RouterLink, MatButtonModule, MatCardModule, MatInputModule, MatSelectModule],
   templateUrl: './editar-colaborador.component.html',
   styleUrl: './editar-colaborador.component.css'
 })
