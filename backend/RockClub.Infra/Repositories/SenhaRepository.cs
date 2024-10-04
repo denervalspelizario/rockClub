@@ -1,6 +1,4 @@
-﻿
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using RockClub.Shared.Entity;
 using RockClub.Shared.Interfaces;
@@ -39,20 +37,21 @@ namespace RockClub.Infra.Repositories
         }
 
         // método que verifica se senha hash já existe no banco
+        // senha = senha do usuario passado pelo usuário
+        // senha salt = criptografia para aumentar a criptografia da senha
+        // senhaHash = senha que está no banco(senha + senhaSalt + criptografia)
         public bool VerificaSenhaHash(string senha, byte[] senhaHash, byte[] senhaSalt)
         {
             // instanciando um objeto temporário(using) hmac
             // que recebe classe que faz encripta hash em 256bits
-            // recebendo de parametro a senha salt para linkar com a senha hash
-            // e aumentar o nível de seguança da senha
             using (var hmac = new HMACSHA256(senhaSalt))
             {
-                /* criando a senha hash baseado na senha passada então por logica
-                   essa senha hash teria que já ter no banco uma igual */
+                // criando uma senha hash baseado na senha passada 
+                // tem que ter uma igual no banco 
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(senha));
 
-                /* retorna se computedHash(senha passa por login hasheada) é igual
-                   a senhaHash(senha hasheada que já esta dentro do banco)*/
+                
+                /* verificando se a computedHash() é igual a senhaHash(senha do banco)*/
                 return computedHash.SequenceEqual(senhaHash);
             }
         }
@@ -83,15 +82,16 @@ namespace RockClub.Infra.Repositories
             // agora de fato criando nosso token
             var token = new JwtSecurityToken(
 
-                claims: clainsCriada, // claim criada
-                expires: DateTime.Now.AddDays(1), // token expira com 1 ano
+                claims: clainsCriada, // claim criada(infos usuários)
+                expires: DateTime.Now.AddDays(1), // token expira com 1 dia
                 signingCredentials: cred // credencial criada acima
 
                 );
 
-            //
+            // gerando o jwt baseado nas informações do token acima
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
+            // retornando jwt
             return jwt;
         }
 
