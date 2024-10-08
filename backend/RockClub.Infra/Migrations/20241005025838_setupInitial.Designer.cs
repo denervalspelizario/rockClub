@@ -12,8 +12,8 @@ using RockClub.Infra.Persistence;
 namespace RockClub.Infra.Migrations
 {
     [DbContext(typeof(RockClubDbContext))]
-    [Migration("20241002031840_addUsuarioModel")]
-    partial class addUsuarioModel
+    [Migration("20241005025838_setupInitial")]
+    partial class setupInitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,11 +79,9 @@ namespace RockClub.Infra.Migrations
 
             modelBuilder.Entity("RockClub.Shared.Entity.UsuarioModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Cargo")
                         .HasColumnType("int");
@@ -99,6 +97,9 @@ namespace RockClub.Infra.Migrations
                     b.Property<byte[]>("SenhaSalt")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("TokenDataCriacao")
                         .HasColumnType("datetime2");

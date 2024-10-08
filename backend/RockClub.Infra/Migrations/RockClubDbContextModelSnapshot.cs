@@ -76,11 +76,9 @@ namespace RockClub.Infra.Migrations
 
             modelBuilder.Entity("RockClub.Shared.Entity.UsuarioModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Cargo")
                         .HasColumnType("int");
@@ -96,6 +94,9 @@ namespace RockClub.Infra.Migrations
                     b.Property<byte[]>("SenhaSalt")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("TokenDataCriacao")
                         .HasColumnType("datetime2");

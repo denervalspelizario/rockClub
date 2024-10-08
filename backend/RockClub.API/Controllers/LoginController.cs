@@ -1,6 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RockClub.API.Filters;
+using RockClub.Application.ColaboradorCQ.Commands;
+using RockClub.Application.UsuarioCQ.Commands;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace RockClub.API.Controllers
 {
@@ -18,11 +22,16 @@ namespace RockClub.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> Register()
+        [SwaggerRequestExample(typeof(CreateUsuarioCommand), typeof(UsuarioCreateSchema))]
+        public async Task<ActionResult> Register(CreateUsuarioCommand usuario)
         {
-            //var resposta = await _authInterface.Registrar(usuarioCriacao);
+            var request = await _mediator.Send(usuario);
 
-            return Ok();
+            if (request.Mensagem == "Dados Adicionandos com Sucesso")
+            {
+                return Ok(request);
+            }
+            return BadRequest(request.Mensagem);
         }
     }
 }

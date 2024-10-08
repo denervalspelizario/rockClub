@@ -8,6 +8,8 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using RockClub.Application.UsuarioCQ.Commands;
+using RockClub.Application.UsuarioCQ.Validators;
 
 
 namespace RockClub.API
@@ -29,7 +31,10 @@ namespace RockClub.API
 
             /* Config Mediator referênciando */
             builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(
-                    typeof(CreateColaboradorCommand).Assembly));
+                typeof(CreateColaboradorCommand).Assembly,
+                typeof(CreateUsuarioCommand).Assembly));
+
+
 
             builder.Services.AddCors(options =>
             {
@@ -56,6 +61,7 @@ namespace RockClub.API
             // config FluentValidation(obs precisa referenciar apenas 1 classe que ele entende onde
             // fica as classes de validação)
             builder.Services.AddValidatorsFromAssemblyContaining<CreateColaboradorComandValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateUsuarioComandValidator>();
             builder.Services.AddFluentValidationAutoValidation();
 
         }
@@ -64,6 +70,7 @@ namespace RockClub.API
         public static void AddInjections(this WebApplicationBuilder builder)
         {
             builder.Services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             builder.Services.AddScoped<ISenhaRepository, SenhaRepository>();
         }
 

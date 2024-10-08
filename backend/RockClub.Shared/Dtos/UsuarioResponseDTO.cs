@@ -9,7 +9,14 @@ namespace RockClub.Shared.Dtos
         public Guid Id { get; set; }
         public string Email { get; set; }
         public string Usuario { get; set; }
-        public CargoEnum Cargo { get; set; }
-        public DateTime TokenDataCriacao { get; set; }
+        public string Cargo { get; set; }
+
+        public UsuarioResponseDTO(Guid id, string email, string usuario, string cargo)
+        {
+            Id = id;
+            Email = email;
+            Usuario = usuario;
+            Cargo = cargo;
+        }
     }
 }
